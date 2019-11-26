@@ -1,0 +1,131 @@
+# This is the default configuration file. Enabling and disabling is configured
+# in separate files. This file adds all other parameters apart from Enabled.
+
+# Common configuration.
+AllCops:
+  # Include common Ruby source files.
+  Include:
+    - 'app/**/*.rb'
+    - 'lib/**/*.rb'
+    - 'lib/**/*.rake'
+    - 'config/**/*.rb'
+    - '**/*.gemspec'
+    - '**/*.podspec'
+    - '**/*.jbuilder'
+    - '**/*.rake'
+    - '**/*.opal'
+    - '**/config.ru'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Capfile'
+    - '**/Guardfile'
+    - '**/Podfile'
+    - '**/Thorfile'
+    - '**/Vagrantfile'
+    - '**/Berksfile'
+    - '**/Cheffile'
+    - '**/Vagabondfile'
+    - '**/Fastfile'
+    - '**/*Fastfile'
+  Exclude:
+    - '**/bin/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'vendor/**/*'
+    - '**/Dangerfile'
+    - 'test/**/*'
+    - 'spec/**/*.rb'
+    - 'app/helpers/**/*'
+    - 'app/mailers/**/*'
+  # Default formatter will be used if no -f/--format option is given.
+  DefaultFormatter: progress
+  # Cop names are not displayed in offense messages by default. Change behavior
+  # by overriding DisplayCopNames, or by giving the -D/--display-cop-names
+  # option.
+  DisplayCopNames: true
+  # Extra details are not displayed in offense messages by default. Change
+  # behavior by overriding ExtraDetails, or by giving the
+  # -E/--extra-details option.
+  ExtraDetails: true
+  # Additional cops that do not reference a style guide rule may be enabled by
+  # default. Change behavior by overriding StyleGuideCopsOnly, or by giving
+  # the --only-guide-cops option.
+  StyleGuideCopsOnly: false
+  # All cops except the ones in disabled.yml are enabled by default. Change
+  # this behavior by overriding DisabledByDefault. When DisabledByDefault is
+  # true, all cops in the default configuration are disabled, and and only cops
+  # in user configuration are enabled. This makes cops opt-in instead of
+  # opt-out. Note that when DisabledByDefault is true, cops in user
+  # configuration will be enabled even if they don't set the Enabled parameter.
+  DisabledByDefault: false
+  # Enables the result cache if true. Can be overridden by the --cache command
+  # line option.
+  UseCache: true
+  # Threshold for how many files can be stored in the result cache before some
+  # of the files are automatically removed.
+  MaxFilesInCache: 20000
+  # What MRI version of the Ruby interpreter is the inspected code intended to
+  # run on? (If there is more than one, set this to the lowest version.)
+  # If a value is specified for TargetRubyVersion then it is used.
+  # Else if .ruby-version exists and it contains an MRI version it is used.
+  # Otherwise we fallback to the oldest officially supported Ruby version (2.1).
+  TargetRubyVersion: 2.5.1
+# Indent private/protected/public as deep as method definitions
+Layout/AccessModifierIndentation:
+  EnforcedStyle: indent
+  SupportedStyles:
+    - outdent
+    - indent
+  # By default, the indentation width from Layout/IndentationWidth is used
+  # But it can be overridden by setting this parameter
+  IndentationWidth: ~
+
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - 'app/controllers/**/*.rb'
+    - 'app/models/**/*.rb'
+    - 'app/decorators/**/*.rb'
+    - 'config/**/*.rb'
+    - 'db/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'lib/tasks/**/*.rake'
+    - 'lib/cache_keys/**/*.rb'
+
+Metrics/LineLength:
+  Max: 80
+  Exclude:
+    - 'config/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'db/**/*.rb'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Metrics/ModuleLength:
+   Max: 200
+
+Metrics/BlockLength:
+  Max: 15
+  CountComments: false
+  Exclude:
+    - 'config/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'lib/tasks/**/*.rake'
+    - 'app/models/concerns/**/*.rb'
+
+Metrics/ClassLength:
+  Max: 200
+  CountComments: false
+
+Metrics/MethodLength:
+  Max: 30
+  CountComments: false
+
+Metrics/AbcSize:
+  Max: 15
+  Exclude:
+    - 'app/decorators/*.rb'
+
+Lint/UnifiedInteger:
+  Exclude:
+    - 'spec/**/*.rb'

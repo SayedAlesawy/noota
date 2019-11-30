@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A worker that creates notes
+# A worker that destroys notes
 class NotesBulkDestroyer
   include Sidekiq::Worker
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_195645) do
+ActiveRecord::Schema.define(version: 2019_11_30_210505) do
 
   create_table "notebooks", force: :cascade do |t|
     t.string "title", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_195645) do
     t.integer "notebook_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country"
     t.index ["notebook_id"], name: "index_notes_on_notebook_id"
   end
 

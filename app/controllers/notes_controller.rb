@@ -49,7 +49,8 @@ class NotesController < ApplicationController
     {
       id: note.id,
       title: note.title,
-      body: note.body
+      body: note.body,
+      country: note.country
     }
   end
 end

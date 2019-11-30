@@ -18,7 +18,8 @@ class NotesCreator
     Note.create!(
       title: params[:title],
       body: params[:body],
-      notebook_id: params[:notebook_id]
+      notebook_id: params[:notebook_id],
+      country: params[:country]
     )
   end
 end

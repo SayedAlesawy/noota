@@ -3,7 +3,7 @@
 class NotesController < ApplicationController
   include NoteParams
 
-  before_action :load_notebook, only: %i[index show]
+  before_action :load_notebook
 
   def index
     notes = []
@@ -22,9 +22,21 @@ class NotesController < ApplicationController
   end
 
   def create
-    NotesCreator.perform_async(note_params.to_json)
+    NotesCreator.perform_async(create_note_params.to_json)
 
     render json: { message: 'success' }, status: 200
+  end
+
+  def destroy
+    @current_notebook.notes.find(params[:id]).destroy!
+
+    render json: { message: 'success' }, status: 202
+  end
+
+  def bulk_destroy
+    NotesBulkDestroyer.perform_async(bulk_destroy_note_params.to_json)
+
+    render json: { message: 'success' }, status: 202
   end
 
   private

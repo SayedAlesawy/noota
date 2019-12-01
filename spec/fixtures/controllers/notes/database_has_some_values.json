@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Note1",
+    "body": "Note1 does work1",
+    "country": "Egypt"
+  },
+  {
+    "id": 3,
+    "title": "Note3",
+    "body": "Note3 does work3",
+    "country": "Canada"
+  }
+]

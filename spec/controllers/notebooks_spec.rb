@@ -5,7 +5,7 @@ RSpec.describe NotebooksController, type: :request do
   context '#index' do
     let!(:url) { '/notebooks' }
 
-    context 'When there are no notebooks' do
+    context 'When there are no notebooks' do 
       let!(:expected_response) { [] }
 
       it 'should return an empty array' do
@@ -225,21 +225,14 @@ RSpec.describe NotebooksController, type: :request do
           expect(response.body).to eq expected_response.to_json
         end
 
-        it 'should return 404 not found' do
-          delete url
-          
-          expect(response.status).to eq 404
-          expect(response.body).to eq expected_response.to_json
-        end
-
         it 'should\'t change the size of the notebook relation' do
           expect{ delete url }.to_not change{ Notebook.count }
         end
       end
 
       context 'Requested record exists' do
-        let!(:expected_response) { {} }
-
+        let!(:expected_response) { { message: 'success' } }
+        
         it 'should return 202' do
           delete url
           

@@ -28,7 +28,7 @@ class NotebooksController < ApplicationController
   def destroy
     Notebook.find(params[:id]).destroy!
 
-    render json: {}, status: 202
+    render json: { message: 'success' }, status: 202
   end
 
   private

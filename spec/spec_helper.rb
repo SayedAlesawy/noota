@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'rspec-sidekiq'
 
 require 'webmock/rspec'

@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
       message: exception.record.errors.full_messages.join(', ')
     }, status: 422
   end
+
+  rescue_from ActionController::ParameterMissing do |exception|
+    render json: { message: exception.message }, status: 400
+  end
 end

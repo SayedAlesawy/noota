@@ -24,7 +24,7 @@ class NotesController < ApplicationController
   def create
     NotesCreator.perform_async(create_note_params.to_json)
 
-    render json: { message: 'success' }, status: 200
+    render json: { message: 'success' }, status: 201
   end
 
   def destroy

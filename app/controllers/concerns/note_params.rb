@@ -13,7 +13,20 @@ module NoteParams
     note_params[:country] = Geolocator.country(note_params[:user_ip])
     note_params.delete(:user_ip)
 
+    validate_note_params(note_params)
+
     note_params
+  end
+
+  def validate_note_params(note_params)
+    validate_param_existence(note_params[:title], 'title')
+    validate_param_existence(note_params[:body], 'body')
+  end
+
+  def validate_param_existence(params, param_name)
+    return unless params.blank?
+
+    raise ActionController::ParameterMissing, param_name
   end
 
   def bulk_destroy_note_params

@@ -59,6 +59,6 @@ end
 
 group :test do
   gem 'rspec-sidekiq'
-  gem 'webmock'
   gem 'simplecov'
+  gem 'webmock'
 end
